@@ -1,11 +1,15 @@
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
+	// ! Required variables
 
 	return (
-		<div className='w-full min-h-screen bg-slate-900 text-white'>
-			<Navbar />
-		</div>
+		<HelmetProvider>
+			<div className='w-full min-h-screen bg-slate-900 text-white'>
+				<Navbar />
+			</div>
+		</HelmetProvider>
 	);
 }
 
