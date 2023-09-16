@@ -1,6 +1,8 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { Outlet } from 'react-router-dom';
 import Navbar from './pages/shared/Navbar/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 	// ! Required variables
@@ -11,6 +13,7 @@ function App() {
 				<Navbar />
 				<Outlet />
 			</div>
+			<ToastContainer />
 		</HelmetProvider>
 	);
 }
