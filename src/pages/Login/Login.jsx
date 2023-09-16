@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
+
 export default function Login() {
-    return (
-        <div>
-            <h1 className="text-center">Login</h1><br/>
-        </div>
-    );
+	return (
+		<p>heh</p>
+	);
 }
