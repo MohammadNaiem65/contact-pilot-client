@@ -1,10 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axiosCustomInstance from '../../axios/axiosCustomInstance';
+import { useContext } from 'react';
+import { UserContext } from '../../providers/UserContext/UserContext';
+import notifyUser from '../../customHooks/notifyUser';
 
 export default function Login() {
 	// ! Required variables
+	const { setUser } = useContext(UserContext);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.from ? location.from : '/';
+
+	// ! Handle login
+	const handleLogin = (e) => {
+		e.preventDefault();
+		const form = e.target;
+
+		const email = form.email.value;
+		const password = form.password.value;
+
+		axiosCustomInstance
+			.get(`/api/users?email=${email}&password=${password}`)
+			.then((res) => {
+				if (res.data) {
+					notifyUser('success', 'Logged in successfully!');
+					setUser(res.data);
+					navigate(from);
+				} else {
+					notifyUser(
+						'error',
+						'Something went wrong! Kindly check email and password.'
+					);
+				}
+			});
+	};
 
 	return (
-		<form className='w-[31rem] mt-32 mx-auto px-10 py-5 border-2 rounded'>
+		<form
+			className='w-[31rem] mt-32 mx-auto px-10 py-5 border-2 rounded'
+			onSubmit={handleLogin}>
 			<h1 className='text-center text-3xl mb-10'>Login</h1>
 
 			{/* Email */}
@@ -37,7 +71,13 @@ export default function Login() {
 					required
 				/>
 			</div>
-            <p className="text-sm mt-1">Don't have any account? <Link to='/sign-up' className="underline">Sign Up</Link> Now.</p>
+			<p className='text-sm mt-1'>
+				Don't have any account?{' '}
+				<Link to='/sign-up' className='underline'>
+					Sign Up
+				</Link>{' '}
+				Now.
+			</p>
 
 			{/* Submit */}
 			<input
