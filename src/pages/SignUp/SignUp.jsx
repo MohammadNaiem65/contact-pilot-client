@@ -1,11 +1,8 @@
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
 	return (
-		<motion.form
-			className='w-[31rem] mt-16 mx-auto px-10 py-5 border-2 flex flex-col items-center rounded'
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1, transition: { delay: 2.5 } }}>
+		<form className='w-[31rem] mt-10 mx-auto px-10 py-5 border-2 rounded'>
 			<h1 className='text-center text-3xl mb-10'>Sign Up</h1>
 
 			{/* Name */}
@@ -68,12 +65,19 @@ export default function SignUp() {
 					required
 				/>
 			</div>
-			{/* Confirm */}
+			<p className='text-sm mt-1'>
+				Don't have any account?{' '}
+				<Link to='/login' className='underline'>
+					Login
+				</Link>{' '}
+				Now.
+			</p>
+			{/* Sign Up */}
 			<input
 				type='submit'
-				value='Submit'
-				className='bg-gray-200 mt-5 px-5 py-2 border-2 font-semibold text-black text-lg rounded cursor-pointer hover:bg-transparent hover:text-white'
+				value='Sign Up'
+				className='bg-gray-200 mt-5 mx-auto block px-5 py-2 border-2 font-semibold text-black text-lg rounded cursor-pointer hover:bg-transparent hover:text-white'
 			/>
-		</motion.form>
+		</form>
 	);
 }
