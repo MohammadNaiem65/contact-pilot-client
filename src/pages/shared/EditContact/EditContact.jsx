@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MetaContext } from '../../../providers/MetaContext/MetaContext';
+import EditContactForm from '../EditContactForm/EditContactForm';
 
 export default function EditContact() {
+	// ! Required variables
 	const { modalDetails, setModalDetails } = useContext(MetaContext);
 
 	return (
@@ -39,6 +41,10 @@ export default function EditContact() {
 							}}>
 							&times;
 						</p>
+						<EditContactForm
+							contactData={modalDetails.modalData}
+							setModalDetails={setModalDetails}
+						/>
 					</motion.div>
 				</motion.div>
 			)}
