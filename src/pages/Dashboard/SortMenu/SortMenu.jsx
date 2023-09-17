@@ -38,7 +38,8 @@ function useMenuAnimation(isOpen) {
 	return scope;
 }
 
-export default function SortMenu() {
+export default function SortMenu({ setSortBy }) {
+	// ! Required variables
 	const [isOpen, setIsOpen] = useState(false);
 	const scope = useMenuAnimation(isOpen);
 
@@ -64,12 +65,23 @@ export default function SortMenu() {
 			<ul
 				style={{
 					pointerEvents: isOpen ? 'auto' : 'none',
-					clipPath: 'inset(10% 50% 90% 50% round 10px)',
 				}}>
-				<li>Name</li>
-				<li>Date</li>
-				<li>Email</li>
-			</ul>{' '}
+				<li
+					className='cursor-pointer hover:bg-gray-200 hover:text-black'
+					onClick={() => setSortBy('name')}>
+					Name
+				</li>
+				<li
+					className='cursor-pointer hover:bg-gray-200 hover:text-black'
+					onClick={() => setSortBy('email')}>
+					Email
+				</li>
+				<li
+					className='cursor-pointer hover:bg-gray-200 hover:text-black'
+					onClick={() => setSortBy('date')}>
+					Date
+				</li>
+			</ul>
 		</nav>
 	);
 }

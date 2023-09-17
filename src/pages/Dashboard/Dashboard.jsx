@@ -12,19 +12,33 @@ export default function Dashboard() {
 	// ! Required variables
 	const { user } = useContext(MetaContext);
 	const [contacts, setContacts] = useState([]);
+	const [sortBy, setSortBy] = useState(null);
 
 	useEffect(() => {
-		const unsubscribe = () => {
-			axiosCustomInstance
-				.get(`/api/contacts?email=${user?.email}`)
-				.then((res) => setContacts(res.data))
-				.catch((err) => notifyUser('error', err.message));
+		const fetchData = async () => {
+			let data;
+			if (!sortBy) {
+				data = await axiosCustomInstance.get(
+					`/api/contacts?email=${user?.email}`
+				);
+			} else if (sortBy === 'name') {
+				data = await axiosCustomInstance.get(
+					`/api/contacts/name?email=${user.email}`
+				);
+			} else if (sortBy === 'email') {
+				data = await axiosCustomInstance.get(
+					`/api/contacts/email?email=${user.email}`
+				);
+			} else if (sortBy === 'date') {
+				data = await axiosCustomInstance.get(
+					`/api/contacts/date?email=${user.email}`
+				);
+			}
+			setContacts(data.data);
 		};
 
-		return () => {
-			return unsubscribe();
-		};
-	}, []);
+		fetchData().catch((err) => notifyUser('error', err.message));
+	}, [sortBy]);
 
 	const handleFindContact = (e) => {
 		e.preventDefault();
@@ -66,7 +80,7 @@ export default function Dashboard() {
 						<h3 className='w-fit mx-auto mt-12 mb-7 px-5 text-2xl border-b-2'>
 							Your Contacts
 						</h3>
-						<SortMenu />
+						<SortMenu setSortBy={setSortBy} />
 					</div>
 					<div className='w-3/4 mx-auto px-10'>
 						<div className='px-4 border-b-2 flex justify-between items-center'>
