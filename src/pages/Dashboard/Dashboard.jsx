@@ -24,6 +24,15 @@ export default function Dashboard() {
 			return unsubscribe();
 		};
 	}, []);
+
+	const handleFindContact = (e) => {
+		e.preventDefault();
+
+		axiosCustomInstance
+			.get(`/api/contacts/contact?name=${e.target.name.value}`)
+			.then((res) => setContacts([res.data]))
+			.catch((err) => notifyUser('error', err.message));
+	};
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
@@ -34,7 +43,9 @@ export default function Dashboard() {
 
 			{user ? (
 				<>
-					<form className='w-1/3 mt-8 mx-auto flex items-center gap-x-5'>
+					<form
+						className='w-1/3 mt-8 mx-auto flex items-center gap-x-5'
+						onSubmit={handleFindContact}>
 						<input
 							type='text'
 							name='name'
