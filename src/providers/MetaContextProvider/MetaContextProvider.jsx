@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 export const MetaContext = createContext({});
 
-export default function UserDataProvider({ children }) {
+export default function MetaContextProvider({ children }) {
 	// ! Required variables
 	const [user, setUser] = useState(null);
 	const [modalDetails, setModalDetails] = useState({

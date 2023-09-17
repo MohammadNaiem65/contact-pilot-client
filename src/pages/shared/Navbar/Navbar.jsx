@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MetaContext } from '../../../providers/MetaContext/MetaContext';
+import { MetaContext } from '../../../providers/MetaContextProvider/MetaContextProvider';
 import ActiveLink from '../ActiveLink/ActiveLink';
 
 export default function Navbar() {

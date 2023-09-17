@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import Contact from '../shared/Contact/Contact';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 import SortMenu from './SortMenu/SortMenu';
 import DownloadContactsBtn from './DownloadContactsBtn/DownloadContactsBtn';
+import { MetaContext } from '../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function Dashboard() {
 	// ! Required variables

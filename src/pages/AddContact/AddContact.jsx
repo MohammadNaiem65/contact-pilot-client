@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
 import { Helmet } from 'react-helmet-async';
+import { MetaContext } from '../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function AddContact() {
 	// ! Required variables

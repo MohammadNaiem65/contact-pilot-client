@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import EditContactForm from '../EditContactForm/EditContactForm';
+import { MetaContext } from '../../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function EditContact() {
 	// ! Required variables

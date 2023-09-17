@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 import notifyUser from '../../../customHooks/notifyUser';
 import Contact from '../../shared/Contact/Contact';
+import { MetaContext } from '../../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function UserAvailable() {
 	// ! Required variables

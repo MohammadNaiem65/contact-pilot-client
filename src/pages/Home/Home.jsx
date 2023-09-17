@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import { motion } from 'framer-motion';
 import UserAvailable from './UserAvailable/UserAvailable';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 import { Helmet } from 'react-helmet-async';
+import { MetaContext } from '../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function Home() {
 	// ! Required variables

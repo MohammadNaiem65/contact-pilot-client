@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import UserDataProvider from './providers/MetaContext/MetaContext.jsx';
 import App from './App.jsx';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import MetaContextProvider from './providers/MetaContextProvider/MetaContextProvider.jsx';
 import Home from './pages/Home/Home.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import AddContact from './pages/AddContact/AddContact.jsx';
-import './index.css';
 import Login from './pages/Login/Login.jsx';
 import SignUp from './pages/SignUp/SignUp.jsx';
+import './index.css';
 
 const router = createBrowserRouter([
 	{
@@ -41,8 +41,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<UserDataProvider>
+		<MetaContextProvider>
 			<RouterProvider router={router} />
-		</UserDataProvider>
+		</MetaContextProvider>
 	</React.StrictMode>
 );

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
-import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 import notifyUser from '../../../customHooks/notifyUser';
+import { MetaContext } from '../../../providers/MetaContextProvider/MetaContextProvider';
 
 export default function Contact({ contact, serial, setContacts }) {
 	// ! Required variables
