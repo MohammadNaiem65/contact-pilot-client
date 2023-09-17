@@ -6,6 +6,7 @@ import Contact from '../shared/Contact/Contact';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
+import SortMenu from './SortMenu/SortMenu';
 
 export default function Dashboard() {
 	// ! Required variables
@@ -61,9 +62,12 @@ export default function Dashboard() {
 							className='bg-gray-200 px-3 py-1 text-lg text-black font-semibold border-2 border-transparent rounded hover:bg-transparent hover:border-white hover:text-white'
 						/>
 					</form>
-					<h3 className='w-fit mx-auto mt-12 mb-7 px-5 text-2xl border-b-2'>
-						Your Contacts
-					</h3>
+					<div className='w-2/3 mx-auto flex items-center'>
+						<h3 className='w-fit mx-auto mt-12 mb-7 px-5 text-2xl border-b-2'>
+							Your Contacts
+						</h3>
+						<SortMenu />
+					</div>
 					<div className='w-3/4 mx-auto px-10'>
 						<div className='px-4 border-b-2 flex justify-between items-center'>
 							<p className='w-1/4 text-start'>Name</p>
