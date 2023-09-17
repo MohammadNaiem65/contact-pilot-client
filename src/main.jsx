@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import UserDataProvider from './providers/UserContext/UserContext.jsx';
+import UserDataProvider from './providers/MetaContext/MetaContext.jsx';
 import App from './App.jsx';
 import Home from './pages/Home/Home.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';

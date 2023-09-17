@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContext';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
+import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import Contact from '../shared/Contact/Contact';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
@@ -8,7 +9,7 @@ import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 
 export default function Dashboard() {
 	// ! Required variables
-	const { user } = useContext(UserContext);
+	const { user } = useContext(MetaContext);
 	const [contacts, setContacts] = useState([]);
 
 	useEffect(() => {
@@ -27,10 +28,30 @@ export default function Dashboard() {
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
 			animate={{ opacity: 1, y: 0 }}>
+			<Helmet>
+				<title>Dashboard || Contact Pilot</title>
+			</Helmet>
+
 			{user ? (
 				<>
+					<form className='w-1/3 mt-8 mx-auto flex items-center gap-x-5'>
+						<input
+							type='text'
+							name='name'
+							id='name'
+							className='w-full p-2.5 text-gray-300 bg-gray-700 block rounded-lg border border-gray-30'
+							placeholder='Enter your query'
+							required
+						/>
+
+						<input
+							type='submit'
+							value='Search'
+							className='bg-gray-200 px-3 py-1 text-lg text-black font-semibold border-2 border-transparent rounded hover:bg-transparent hover:border-white hover:text-white'
+						/>
+					</form>
 					<h3 className='w-fit mx-auto mt-12 mb-7 px-5 text-2xl border-b-2'>
-						Your recent contacts
+						Your Contacts
 					</h3>
 					<div className='w-3/4 mx-auto px-10'>
 						<div className='px-4 border-b-2 flex justify-between items-center'>

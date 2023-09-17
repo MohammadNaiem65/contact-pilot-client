@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
+import { Helmet } from 'react-helmet-async';
 
 export default function SignUp() {
 	// ! Handle Sign up
@@ -37,6 +38,9 @@ export default function SignUp() {
 		<form
 			className='w-[31rem] mt-10 mx-auto px-10 py-5 border-2 rounded'
 			onSubmit={handleSignUp}>
+			<Helmet>
+				<title>Sign Up || Contact Pilot</title>
+			</Helmet>
 			<h1 className='text-center text-3xl mb-10'>Sign Up</h1>
 
 			{/* Name */}

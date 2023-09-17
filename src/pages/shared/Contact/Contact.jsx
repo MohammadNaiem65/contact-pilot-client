@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 import notifyUser from '../../../customHooks/notifyUser';
 
 export default function Contact({ contact, serial, setContacts }) {
 	// ! Required variables
 	const { _id, name, phone, email } = contact;
+	const { modalDetails, setModalDetails } = useContext(MetaContext);
 
 	const handleDelete = () => {
 		axiosCustomInstance
@@ -37,7 +40,17 @@ export default function Contact({ contact, serial, setContacts }) {
 			<p className='w-1/4 text-start'>{phone}</p>
 			<p className='w-1/3 text-start'>{email}</p>
 			<p className='w-14 text-xl'>
-				<button className='mr-2'>📝</button>
+				<button
+					className='mr-2'
+					onClick={() => {
+						const newModalDetails = {
+							showModal: true,
+							modalData: { ...contact },
+						};
+						setModalDetails(newModalDetails);
+					}}>
+					📝
+				</button>
 				<button onClick={handleDelete}>&times;</button>
 			</p>
 		</motion.div>

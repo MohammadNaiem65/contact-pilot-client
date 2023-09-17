@@ -1,12 +1,13 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import { useContext } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContext';
+import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import notifyUser from '../../customHooks/notifyUser';
+import { Helmet } from 'react-helmet-async';
 
 export default function Login() {
 	// ! Required variables
-	const { setUser } = useContext(UserContext);
+	const { setUser } = useContext(MetaContext);
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.from ? location.from : '/';
@@ -40,6 +41,9 @@ export default function Login() {
 		<form
 			className='w-[31rem] mt-32 mx-auto px-10 py-5 border-2 rounded'
 			onSubmit={handleLogin}>
+			<Helmet>
+				<title>Login || Contact Pilot</title>
+			</Helmet>
 			<h1 className='text-center text-3xl mb-10'>Login</h1>
 
 			{/* Email */}

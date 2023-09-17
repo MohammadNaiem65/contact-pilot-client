@@ -1,12 +1,13 @@
-import { useContext, useState } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContext';
+import { useContext } from 'react';
+import { MetaContext } from '../../providers/MetaContext/MetaContext';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
+import { Helmet } from 'react-helmet-async';
 
 export default function AddContact() {
 	// ! Required variables
-	const { user } = useContext(UserContext);
+	const { user } = useContext(MetaContext);
 
 	const handleAddContact = (e) => {
 		e.preventDefault();
@@ -23,15 +24,19 @@ export default function AddContact() {
 			.post('/api/contacts', contactData)
 			.then((res) => {
 				if (res.data.insertedId) {
-					notifyUser('success', 'Deleted successfully!');
+					notifyUser('success', 'Added successfully!');
 				} else {
 					notifyUser('error', 'Something went wrong!');
 				}
+				form.reset();
 			})
 			.catch((err) => notifyUser('error', err.message));
 	};
 	return (
 		<>
+			<Helmet>
+				<title>Add Contact || Contact Pilot</title>
+			</Helmet>
 			{user ? (
 				<form
 					className='w-[31rem] mt-24 mx-auto px-10 py-5 rounded'

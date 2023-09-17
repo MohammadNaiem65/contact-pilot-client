@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../providers/UserContext/UserContext';
+import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 import notifyUser from '../../../customHooks/notifyUser';
 import Contact from '../../shared/Contact/Contact';
 
 export default function UserAvailable() {
 	// ! Required variables
-	const { user } = useContext(UserContext);
+	const { user } = useContext(MetaContext);
 	const [recentContacts, setRecentContacts] = useState([]);
 
 	useEffect(() => {

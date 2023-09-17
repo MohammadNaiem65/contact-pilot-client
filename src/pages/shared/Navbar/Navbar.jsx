@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UserContext } from '../../../providers/UserContext/UserContext';
+import { MetaContext } from '../../../providers/MetaContext/MetaContext';
 import ActiveLink from '../ActiveLink/ActiveLink';
 
 export default function Navbar() {
 	// ! Required variables
-	const { user, setUser } = useContext(UserContext);
+	const { user, setUser } = useContext(MetaContext);
 
 	// ! Motion element variants
 	const containerVariant = {
