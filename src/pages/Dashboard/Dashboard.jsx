@@ -7,6 +7,7 @@ import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notifyUser from '../../customHooks/notifyUser';
 import UserUnavailable from '../shared/UserUnavailable/UserUnavailable';
 import SortMenu from './SortMenu/SortMenu';
+import DownloadContactsBtn from './DownloadContactsBtn/DownloadContactsBtn';
 
 export default function Dashboard() {
 	// ! Required variables
@@ -58,6 +59,7 @@ export default function Dashboard() {
 
 			{user ? (
 				<>
+					{/* Top input field */}
 					<form
 						className='w-1/3 mt-8 mx-auto flex items-center gap-x-5'
 						onSubmit={handleFindContact}>
@@ -76,12 +78,15 @@ export default function Dashboard() {
 							className='bg-gray-200 px-3 py-1 text-lg text-black font-semibold border-2 border-transparent rounded hover:bg-transparent hover:border-white hover:text-white'
 						/>
 					</form>
-					<div className='w-2/3 mx-auto flex items-center'>
+					{/* Header */}
+					<div className='w-2/3 mx-auto mt-10 relative flex items-center'>
+						<DownloadContactsBtn userEmail={user.email} />
 						<h3 className='w-fit mx-auto mt-12 mb-7 px-5 text-2xl border-b-2'>
 							Your Contacts
 						</h3>
 						<SortMenu setSortBy={setSortBy} />
 					</div>
+					{/* Contact table */}
 					<div className='w-3/4 mx-auto px-10'>
 						<div className='px-4 border-b-2 flex justify-between items-center'>
 							<p className='w-1/4 text-start'>Name</p>

@@ -44,7 +44,7 @@ export default function SortMenu({ setSortBy }) {
 	const scope = useMenuAnimation(isOpen);
 
 	return (
-		<nav className='menu' ref={scope}>
+		<div className='menu' ref={scope}>
 			<motion.button
 				className='bg-gray-200 px-3 py-1 text-lg text-black font-semibold rounded flex items-center'
 				whileTap={{ scale: 0.97 }}
@@ -82,6 +82,6 @@ export default function SortMenu({ setSortBy }) {
 					Date
 				</li>
 			</ul>
-		</nav>
+		</div>
 	);
 }
