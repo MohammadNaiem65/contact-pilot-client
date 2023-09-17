@@ -32,7 +32,8 @@ export default function Login() {
 						'Something went wrong! Kindly check email and password.'
 					);
 				}
-			});
+			})
+			.catch(() => notifyUser('error', 'Internal server error.'));
 	};
 
 	return (

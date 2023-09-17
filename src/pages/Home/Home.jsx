@@ -10,7 +10,8 @@ export default function Home() {
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
-			animate={{ opacity: 1, y: 0, transition: { delay: 2.5 } }}>
+			animate={{ opacity: 1, y: 0, transition: { delay: 2.5 } }}
+			viewport={{ once: true }}>
 			{user ? <UserAvailable /> : <UserUnavailable />}
 		</motion.div>
 	);
